@@ -19,6 +19,9 @@ function T:toggle_fullscreen()
     -- Back to previous size
     vim.api.nvim_win_set_height(self.win, self.previous_height)
     vim.api.nvim_win_set_width(self.win, self.previous_width)
+    -- restoring with multiple vertical splits, left some with width 0
+    -- quick workaround is to resize them to equal width
+    vim.api.nvim_command([[execute "normal! \<C-w>="]])
   end
 
   -- toggle
